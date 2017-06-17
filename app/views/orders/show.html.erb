@@ -1,32 +1,39 @@
-<% if @order.blank? %>
-  <div class="orders">
-    <h2>Your order</h2>
-    <table class="striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Item Price</th>
-          <th>Quantity</th>
-          <th>Total price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render 'form' %>
-        <tr>
-          <td><strong>Total cost</strong></td>
-          <td></td>
-          <td></td>
-          <td class="orange-text">
-            <strong id="total-cost"><%=  @order.subtotal %></strong>  
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<% if !@order.order_items.blank? %>
+<div class="orders">
+  <h2>Your order</h2>
+  <div class="order-form">
+    <%= simple_form_for @order, url: orders_path do |f| %> 
+      <div class="order-item">
+        <h3>Order item</h3>
+      </div>
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Item Price</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+          </tr>
+          <%= render 'order_items/order_item_fields', f: f%>
+        </thead>
+        <tbody>
+      </table>
+        <%= f.input :coupon %>
+        <%= f.input :shipping %>
+        <div class="total-cost">
+          <strong>Total cost: </strong>
+          <strong id="total-cost" class="orange-text">
+            <%=  @order.total %> 
+          </strong>  
+        </div>
+      <%= f.submit class: "btn" %>
+    <% end %>
   </div>
-  <div class="divider"></div>
+</div>
+<div class="divider"></div>
 <% else %>
-  <div class="order center">
-    <h2 >You have no order item</h2>
-    <%= link_to "Order now", menu_path, class: "btn orange" %>
-  </div>
+<div class="order center">
+  <h2 >You have no order item</h2>
+  <%= link_to "Order now", menu_path, class: "btn orange" %>
+</div>
 <% end %>

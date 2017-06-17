@@ -11,7 +11,8 @@
         </p>
       </div>
       <div class="card-action">
-        <p class="orange-text"><%= number_to_currency(@food_item.price) %></p>
+        <p class="orange-text"><%= number_to_currency(@food_item.price) %>
+        </p>
         <%= render 'order_items/form', food_item: @food_item %>
       </div>
     </div>

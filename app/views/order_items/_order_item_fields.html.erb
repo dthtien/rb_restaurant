@@ -8,5 +8,9 @@
       <%= builder.input :quantity %>
     </td>
     <td class="total-item-price"><%= builder.input :total_price, disabled:true %></td>
+    <td>
+      <%= link_to "remove", '#', class: 'remove-fields' %>
+      <%= builder.input :_destroy, as: :hidden %>
+    </td>
   </tr>
 <% end %>

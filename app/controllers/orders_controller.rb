@@ -5,9 +5,17 @@ class OrdersController < ApplicationController
   end
 
   def update
-    order_item = @order.order_items.build(order_item_params)
-    if order_item.save
-      order_item.update_total_price
+    if @order.update(order_params)
+      @order.update_subtotal
+      flash[:notice] = 'ok'
+    else
+      flash[:alert] = 'not ok'
+    end
+    redirect_to :back
+  end
+
+  def update_order
+    if @order.order_items.create(order_item_params)
       @order.update_subtotal
       flash[:notice] = "ok!"
     else
@@ -16,6 +24,7 @@ class OrdersController < ApplicationController
     redirect_to :back
   end
 
+
   private
     def set_order
       @order = current_order
@@ -23,6 +32,10 @@ class OrdersController < ApplicationController
     end
 
     def order_item_params
-      params.require(:order_item).permit(:food_item_id, :name, :unit_price, :quantity)
+      params.require(:order_item).permit(:food_item_id, :quantity)
+    end
+
+    def order_params
+      params.require(:order).permit(:coupon, order_items_attributes: [:id, :quantity, :_destroy ])
     end
 end

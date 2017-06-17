@@ -1,10 +1,7 @@
 <div class="order-form">
   <%= simple_form_for :order_item, url: order_path, method: :put do |f| %>
     <%= f.input :food_item_id, as: :hidden, input_html: { value: food_item.id } %>
-    <%= f.input :unit_price, as: :hidden, input_html: { value: food_item.price } %>
-    <%= f.input :name, as: :hidden, input_html: { value: food_item.name } %>
-
-    <%= f.input :quantity, as: :numeric %>
+    <%= f.input :quantity, as: :numeric, input_html: { value: 1} %>
 
     <%= f.submit "Order now", class: "btn orange" %>
   <% end %>

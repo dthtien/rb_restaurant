@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resource :search, only: :show
 
-  resource :order
+  put 'order' => 'orders#update_order'
+  
+  resource :orders
 
   resources :order_items, only: [:create, :update, :destroy]
 end
