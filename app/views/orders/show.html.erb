@@ -1,0 +1,32 @@
+<% if @order.blank? %>
+  <div class="orders">
+    <h2>Your order</h2>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Item Price</th>
+          <th>Quantity</th>
+          <th>Total price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'form' %>
+        <tr>
+          <td><strong>Total cost</strong></td>
+          <td></td>
+          <td></td>
+          <td class="orange-text">
+            <strong id="total-cost"><%=  @order.subtotal %></strong>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="divider"></div>
+<% else %>
+  <div class="order center">
+    <h2 >You have no order item</h2>
+    <%= link_to "Order now", menu_path, class: "btn orange" %>
+  </div>
+<% end %>

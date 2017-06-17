@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
   get 'searches/show'
 
   root  "home#index"
@@ -7,9 +12,13 @@ Rails.application.routes.draw do
 
   get 'menu' => "home#menu"
 
+  
+
   resources :food_items
 
   resource :search, only: :show
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resource :order
+
+  resources :order_items, only: [:create, :update, :destroy]
 end

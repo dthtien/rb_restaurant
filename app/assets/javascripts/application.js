@@ -4,6 +4,7 @@
 //= require materialize-sprockets
 //= require materialize-form
 //= require turbolinks
+//= require jquery_nested_form
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {

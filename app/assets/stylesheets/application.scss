@@ -2,3 +2,20 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import 'materialize';
 
+.notice{
+  @extend .green;
+  @extend .darken-2;
+}
+.alert{
+  @extend .red;
+  @extend .accent-2;
+}
+
+.primary {
+  background-color: $primary-color;
+}
+
+body {
+  background-color: $primary-bg-color;
+}
+

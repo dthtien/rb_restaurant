@@ -4,7 +4,6 @@ class FoodItemsController < ApplicationController
   def new
     @food_item = FoodItem.new
   end
-    
   def create
     @food_item = FoodItem.new(food_item_params)
     if @food_item.save

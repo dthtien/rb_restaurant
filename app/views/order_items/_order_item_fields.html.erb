@@ -1,0 +1,12 @@
+<%= f.simple_fields_for :order_items do |builder| %>
+  <tr>
+    <td><%= builder.input :name, disabled: true%></td>
+    <td class="item-price">
+      <%= builder.input :unit_price, disabled: true %>
+    </td>
+    <td>
+      <%= builder.input :quantity %>
+    </td>
+    <td class="total-item-price"><%= builder.input :total_price, disabled:true %></td>
+  </tr>
+<% end %>

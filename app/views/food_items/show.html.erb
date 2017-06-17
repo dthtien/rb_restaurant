@@ -1,1 +1,22 @@
-<%= render @food_item %>
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag @food_item.image_link %>
+        <span class="card-title"><%= @food_item.name %></span>
+      </div>
+      <div class="card-content">
+        <p>
+          <%= simple_format(@food_item.description) %>
+        </p>
+      </div>
+      <div class="card-action">
+        <p class="orange-text"><%= number_to_currency(@food_item.price) %></p>
+        <%= render 'order_items/form', food_item: @food_item %>
+      </div>
+    </div>
+  </div>
+  <div class="col m5">
+    <h1>Review</h1>
+  </div>
+</div>

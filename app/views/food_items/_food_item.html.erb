@@ -1,10 +1,11 @@
 <div class="food-item">
   <div class="row">
     <div class="col m4">
-      <%= image_tag food_item.image_link, class: "responsive-img" %>
+      <%= link_to image_tag(food_item.image_link, class: "responsive-img"),
+        food_item %>
     </div>
     <div class="col m8">
-      <h4><%= food_item.name %></h4>
+      <h4><%= link_to food_item.name, food_item %></h4>
       <p><i><%= number_to_currency(food_item.price) %></i></p>
       <p><%= simple_format(food_item.description[0..50]) %></p>
     </div>

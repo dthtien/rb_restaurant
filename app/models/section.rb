@@ -1,5 +1,5 @@
 class Section < ApplicationRecord
-  has_many :food_items
+  has_many :food_items, dependent: :destroy
 
   def sort_food_items(sort_method)
     if sort_method == 'alphabetical'
