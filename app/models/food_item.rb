@@ -4,8 +4,6 @@ class FoodItem < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :impressions, as: :impressionable
 
-  default_scope { order(created_at: :desc) }
-
   def average_review_score
     self.reviews.blank? ? 0 : self.reviews.map(&:star).map(&:score).sum/self.reviews.size
   end
