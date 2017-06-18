@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: :thank
+  before_action :paied?, only: :thank
   def index
   end
 
@@ -13,6 +15,16 @@ class HomeController < ApplicationController
         @current_section.sort_food_items(params[:sort]) : 
         @current_section.food_items
     end
-    
   end
+
+  def thank
+  end
+
+  private
+    def paied?
+      unless current_order.paied
+        flash[:alert] = "Page not found"
+        redirect_to root_path
+      end
+    end
 end

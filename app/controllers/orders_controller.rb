@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: :update
   before_action :set_order
 
   def show
@@ -7,11 +8,12 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       @order.update_subtotal
-      flash[:notice] = 'ok'
+      flash[:notice] = 'Please leave your infomation!'
+      redirect_to edit_profile_path(current_user.profile)
     else
-      flash[:alert] = 'not ok'
+      flash[:alert] = 'Cannot checkout this order'
+      redirect_to :back
     end
-    redirect_to :back
   end
 
   def update_order
@@ -20,8 +22,8 @@ class OrdersController < ApplicationController
       flash[:notice] = "ok!"
     else
       flash[:alert] = "not ok!"
+      redirect_to :back
     end
-    redirect_to :back
   end
 
 

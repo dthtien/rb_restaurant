@@ -1,10 +1,14 @@
 <% if !@order.order_items.blank? %>
 <div class="orders">
-  <h2>Your order</h2>
+  <h2 class="center orange-text">Your order</h2>
+  <i>Created at <%= display_time @order.created_at %>
+    and updated at <%= display_time @order.updated_at %>
+  </i>
+
   <div class="order-form">
     <%= simple_form_for @order, url: orders_path do |f| %> 
       <div class="order-item">
-        <h3>Order item</h3>
+        <h3 class="center">Order item</h3>
       </div>
       <table class="striped">
         <thead>
@@ -16,21 +20,33 @@
           </tr>
           <%= render 'order_items/order_item_fields', f: f%>
         </thead>
-        <tbody>
       </table>
-        <%= f.input :coupon %>
-        <%= f.input :shipping %>
-        <div class="total-cost">
-          <strong>Total cost: </strong>
-          <strong id="total-cost" class="orange-text">
-            <%=  @order.total %> 
-          </strong>  
+      <div class="row">
+        <div class="col m6">
+          <%= f.input :coupon %>
         </div>
-      <%= f.submit class: "btn" %>
+        <div class="col m6">
+          <%= f.input :shipping, disabled:true %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <div class="total-cost center">
+            <strong>Total cost: </strong>
+            <strong id="total-cost" class="orange-text">
+              <%= @order.total %> 
+            </strong>  
+          </div>
+        </div>
+        <div class="col m12">
+          <div class="submit-order center">
+            <%= f.submit "Check out",  class: "btn orange" %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
-<div class="divider"></div>
 <% else %>
 <div class="order center">
   <h2 >You have no order item</h2>

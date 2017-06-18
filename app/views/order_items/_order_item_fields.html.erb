@@ -9,7 +9,10 @@
     </td>
     <td class="total-item-price"><%= builder.input :total_price, disabled:true %></td>
     <td>
-      <%= link_to "remove", '#', class: 'remove-fields' %>
+      <%= link_to '#', class: 'remove-fields tooltipped',
+       data: { position: 'bottom', delay: 10, tooltip: "Delete" } do %>
+        <i class="material-icons red-text">close</i>
+      <% end %>
       <%= builder.input :_destroy, as: :hidden %>
     </td>
   </tr>
