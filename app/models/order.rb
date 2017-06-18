@@ -2,8 +2,6 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   accepts_nested_attributes_for :order_items, allow_destroy: true
 
-  before_update :check_coupon
-
   def self.create_or_find_order(id)
     where(id: id).first_or_create
   end

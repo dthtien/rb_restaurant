@@ -17,12 +17,12 @@
           menu_path(section: @current_section.name, sort: 'alphabetical') %>
       </li>
       <li>
-        <%= link_to "Price low to high", 
-          menu_path(section: @current_section.name, sort: 'priceasc') %>
-      </li>
-      <li>
          <%= link_to "Price high to low", 
           menu_path(section: @current_section.name, sort: 'pricedesc') %>
+      </li>
+      <li>
+        <%= link_to "Price low to high", 
+          menu_path(section: @current_section.name, sort: 'priceasc') %>
       </li>
     </ul>
   </div>
