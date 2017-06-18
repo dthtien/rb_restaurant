@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618043236) do
+ActiveRecord::Schema.define(version: 20170618144433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170618043236) do
     t.datetime "updated_at",  null: false
     t.string   "image_link"
     t.index ["section_id"], name: "index_food_items_on_section_id", using: :btree
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "ip_address"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "order_items", force: :cascade do |t|

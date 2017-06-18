@@ -1,5 +1,6 @@
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show]
+  before_action :log_impression, only: [:show]
 
   def new
     @food_item = FoodItem.new
@@ -28,5 +29,14 @@ class FoodItemsController < ApplicationController
 
     def food_item_params
       params.require(:food_item).permit(:name, :description, :price, :section_id, :image_link)
+    end
+
+    def log_impression
+      if user_signed_in?
+        @food_item.impressions.find_or_create_by(ip_address: request.remote_ip,
+                                    user_id: current_user.id)
+      else
+        @food_item.impressions.find_or_create_by(ip_address: request.remote_ip)
+      end
     end
 end

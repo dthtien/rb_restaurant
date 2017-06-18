@@ -8,6 +8,7 @@
       <h4><%= link_to food_item.name, food_item %></h4>
       <p><i><%= number_to_currency(food_item.price) %></i></p>
       <p><%= simple_format(food_item.description[0..50]) %></p>
+      <p class="chip"><%= pluralize food_item.impression_count, 'view' %></p>
     </div>
   </div>
 </div>

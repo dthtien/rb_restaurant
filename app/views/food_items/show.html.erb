@@ -13,6 +13,7 @@
       <div class="card-action">
       <p>Score: <strong class="orange-text"><%= @food_item.average_review_score %>/5</strong></p>
         <p>Pice: <strong class="orange-text"><%= @food_item.price %>  VND</strong></p>
+        <p class="chip"><%= pluralize @food_item.impression_count, 'view' %></p>
         <%= render 'order_items/form', food_item: @food_item %>
       </div>
     </div>

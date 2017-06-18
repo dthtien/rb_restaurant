@@ -2,6 +2,7 @@ class FoodItem < ApplicationRecord
   belongs_to :section
   has_many :order_items, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :impressions, as: :impressionable
 
   default_scope { order(created_at: :desc) }
 
@@ -11,5 +12,13 @@ class FoodItem < ApplicationRecord
 
   def self.search(keyword)
     FoodItem.where("lower(name) LIKE ? OR lower(description) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%")
+  end
+
+  def impression_count
+    impressions.size
+  end
+
+  def unique_impression_count
+    impressions.group(:ip_address).size.keys.length
   end
 end
