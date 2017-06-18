@@ -16,8 +16,9 @@ class Order < ApplicationRecord
     self.save
   end
 
-  private
-    def check_coupon
-      self.total = self.coupon == "CODERSCHOOL" ? total/2 : total
-    end
+  def check_coupon
+    self.total = self.coupon == "CODERSCHOOL" ? total/2 : total
+    self.save
+  end
+
 end

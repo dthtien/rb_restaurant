@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       @order.update_subtotal
+      @order.check_coupon
       flash[:notice] = 'Please leave your infomation!'
       redirect_to edit_profile_path(current_user.profile)
     else
