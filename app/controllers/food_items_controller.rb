@@ -18,6 +18,7 @@ class FoodItemsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   private

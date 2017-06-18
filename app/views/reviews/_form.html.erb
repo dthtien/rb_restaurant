@@ -1,0 +1,7 @@
+<%= simple_form_for [@food_item, @review], remote: true do |f| %>
+  <%= f.association :star, include_blank: false, label: "Score",
+    input_html: {class: "width-max"} %>
+  <%= f.input :body , input_html: {class: "width-max"} %>
+
+  <%= f.submit class: 'btn'%>
+<% end %>

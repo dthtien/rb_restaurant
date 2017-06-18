@@ -22,8 +22,8 @@ class OrdersController < ApplicationController
       flash[:notice] = "ok!"
     else
       flash[:alert] = "not ok!"
-      redirect_to :back
     end
+    redirect_to :back
   end
 
 

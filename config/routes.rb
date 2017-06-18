@@ -10,13 +10,15 @@ Rails.application.routes.draw do
   get 'menu' => "home#menu"
   get 'thank' => "home#thank"
 
-  resources :food_items
+  resources :food_items , shallow: true do
+    resources :reviews, only: :create
+  end
 
   resource :search, only: :show
 
   put 'order' => 'orders#update_order'
   resource :orders, only: [:show, :update]
 
-  resources :profiles
+  resources :profiles, only: [:edit, :update]
 
 end

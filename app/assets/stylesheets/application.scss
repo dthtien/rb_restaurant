@@ -2,6 +2,9 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import 'materialize';
 @import 'orders';
+@import 'home';
+@import 'food_items';
+@import 'reviews';
 
 .notice{
   @extend .green;

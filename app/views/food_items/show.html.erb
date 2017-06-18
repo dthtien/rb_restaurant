@@ -11,13 +11,27 @@
         </p>
       </div>
       <div class="card-action">
-        <p class="orange-text"><%= number_to_currency(@food_item.price) %>
-        </p>
+      <p>Score: <strong class="orange-text"><%= @food_item.average_review_score %>/5</strong></p>
+        <p>Pice: <strong class="orange-text"><%= @food_item.price %>  VND</strong></p>
         <%= render 'order_items/form', food_item: @food_item %>
       </div>
     </div>
   </div>
   <div class="col m5">
-    <h1>Review</h1>
+    <div id="reviews">
+      <div class="review-form">
+        <h5>Reviews</h5>
+        <%= render 'reviews/form' %>
+      </div>
+      <div class="divider"></div>
+      <% if !@food_item.reviews.blank? %>
+        <h5 class="center">Reviews list</h5>
+        <div id="list-reviews">
+          <%= render @food_item.reviews %>
+        <% else %>
+          <p class="This food item have not reviewed yet"></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,14 @@
+#reviews{
+  padding: 10px;
+  .review-form{
+    @extend .center;
+    @extend .card;
+    text-align: center;
+    padding: 10px;
+  }
+  #list-reviews{
+    .card-review{
+      padding: 7px;
+    }
+  }
+}

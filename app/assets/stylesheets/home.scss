@@ -1,3 +1,31 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.section-link{
+    @extend .center;
+    background-color: $primary-color;
+    .section-list{
+      @extend .row;
+      .section{
+        @extend .col;
+        @extend .m3;
+        padding: 7px;
+        font-size: 18px;
+        a{
+          display: block;
+          width: 100%;
+          @extend .white-text;
+        }
+        &:hover{
+            border-bottom: 3px solid white;
+          }
+      }
+    }
+}
+.sort{
+  padding: 5px 0px 5px 0px;
+  a.sort-dropdown{
+    margin: -24px;
+  }
+}
+.active-btn{
+  width: 100px;
+  border-bottom: 3px solid white;
+}

@@ -1,28 +1,34 @@
 <h1>Menu</h1>
-<div class="btn-group">
-  <% @sections.each do |section| %>
-    <%= link_to section.name, menu_path(section_id: section.id), 
-      class: "btn #{params[:section_id] == section.id.to_s ? 'active' : 'blue'}"%>
-  <% end %>
-
-  <% if @current_section.present? %>
-    <div class="sort-food-item right">
-      <a class='dropdown-button btn grey' href='#' data-activates='sort-dropdown'>Sort</a>
-      <ul id='sort-dropdown' class='dropdown-content'>
-        <li>
-          <%= link_to "Alphabetical", 
-            menu_path(section_id: @current_section.id, sort: 'alphabetical') %>
+  <div class="section-link">
+    <ul class="section-list">
+      <% @sections.each do |section| %>
+        <li class="section <%= 'active-btn' if(params[:section] == section.name)%>">
+          <%= link_to section.name, menu_path(section: section.name)%>
         </li>
-        <li>
-          <%= link_to "Price low to high", 
-            menu_path(section_id: @current_section.id, sort: 'priceasc') %>
-        </li>
-        <li>
-           <%= link_to "Price high to low", 
-            menu_path(section_id: @current_section.id, sort: 'pricedesc') %>
-        </li>
-      </ul>
-    </div>
+      <% end %>
+    </ul>
+  </div>
+<% if @current_section.present? %>
+  <div class="sort">
+    <a class='dropdown-button btn right sort-dropdown' href='#' data-activates='sort-dropdown'>Sort by</a>
+    <ul id='sort-dropdown' class='dropdown-content'>
+      <li>
+        <%= link_to "Alphabetical", 
+          menu_path(section: @current_section.name, sort: 'alphabetical') %>
+      </li>
+      <li>
+        <%= link_to "Price low to high", 
+          menu_path(section: @current_section.name, sort: 'priceasc') %>
+      </li>
+      <li>
+         <%= link_to "Price high to low", 
+          menu_path(section: @current_section.name, sort: 'pricedesc') %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+<% if @current_section.present? %>
+  <div id="food-items">
     <%= render @food_items unless @food_items.blank? %>
-  <% end %>
-</div>
+  </div>
+<% end %>

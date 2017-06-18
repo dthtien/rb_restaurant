@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617162915) do
+ActiveRecord::Schema.define(version: 20170618043236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,10 +61,29 @@ ActiveRecord::Schema.define(version: 20170617162915) do
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "star_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "food_item_id"
+    t.index ["food_item_id"], name: "index_reviews_on_food_item_id", using: :btree
+    t.index ["star_id"], name: "index_reviews_on_star_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
   create_table "sections", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.integer  "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +108,7 @@ ActiveRecord::Schema.define(version: 20170617162915) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "food_items"
+  add_foreign_key "reviews", "stars"
+  add_foreign_key "reviews", "users"
 end

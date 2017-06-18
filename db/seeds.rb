@@ -6,3 +6,13 @@ unless Section.any?
     {name: "Drinks"} 
   ]
 end
+
+unless Star.any?
+  Star.create! [
+    {score: 1, name: 'one star'},
+    {score: 2, name: 'two star'},
+    {score: 3, name: 'three star'},
+    {score: 4, name: 'four star'},
+    {score: 5, name: 'five star'}
+  ]
+end
