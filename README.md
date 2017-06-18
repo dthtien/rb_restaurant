@@ -6,7 +6,7 @@ Submitted by: **The Tien**
 
 Time spent: **15** hours spent in total
 
-URL: **heroku-app-url**
+URL: **https://rb-restaurant.herokuapp.com**
 
 ## User Stories
 
