@@ -1,1 +1,2 @@
-$('div#list-reviews').prepend("<%= j render @review %>")
+$('form#new_review')[0].reset();
+$('div#list-reviews').prepend("<%= j render @review %>");

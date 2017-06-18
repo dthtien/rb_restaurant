@@ -15,7 +15,7 @@ class FoodItem < ApplicationRecord
   end
 
   def impression_count
-    impressions.size
+    !impressions.blank? ? impressions.size : 0
   end
 
   def unique_impression_count

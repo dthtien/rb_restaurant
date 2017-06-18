@@ -25,14 +25,11 @@
         <%= render 'reviews/form' %>
       </div>
       <div class="divider"></div>
-      <% if !@food_item.reviews.blank? %>
-        <h5 class="center">Reviews list</h5>
-        <div id="list-reviews">
-          <%= render @food_item.reviews %>
-        <% else %>
-          <p class="This food item have not reviewed yet"></p>
-        </div>
-      <% end %>
+      <h5 class="center">Reviews list</h5>
+      <div id="list-reviews">
+        <%= render @food_item.reviews %>
+        <p class="This food item have not reviewed yet"></p>
+      </div>
     </div>
   </div>
 </div>
