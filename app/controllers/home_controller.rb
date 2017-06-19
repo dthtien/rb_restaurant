@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, only: :thank
   def index
-    @food_items = FoodItem.order('food_items.impressions_count DESC').limit(5)
+    @food_items = FoodItem.order('food_items.impressions_count ASC').limit(5)
   end
 
   def contact

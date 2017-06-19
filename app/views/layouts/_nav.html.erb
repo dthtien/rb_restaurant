@@ -9,12 +9,14 @@
         <li>
           <%= link_to "Contact", contact_path %>
         </li>
-        <li>
-          <%= link_to orders_path do %>
-            Your Orders
-            <span class="new badge"><%= current_order.order_items.size %></span>
-          <% end %>
-        </li>
+        <% unless current_order.order_items.blank? %>
+          <li>
+            <%= link_to orders_path do %>
+              Your Orders
+              <span class="new badge"><%= current_order.order_items.size %></span>
+            <% end %>
+          </li>
+        <% end %>
       <% if user_signed_in? %>
         <li>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete %>

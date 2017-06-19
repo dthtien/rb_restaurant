@@ -22,7 +22,11 @@
     <div id="reviews">
       <div class="review-form">
         <h5>Reviews</h5>
-        <%= render 'reviews/form' %>
+        <% if user_signed_in? %>
+          <%= render 'reviews/form' %>  
+        <% else %>
+          <%= link_to "Sign in to create reviews", new_user_session_path, class: "btn" %>
+        <% end %>
       </div>
       <div class="divider"></div>
       <h5 class="center">Reviews list</h5>
