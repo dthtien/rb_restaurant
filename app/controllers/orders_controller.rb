@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: :update
+  before_action :authenticate_user!, only: [:update]
   before_action :set_order
 
   def show

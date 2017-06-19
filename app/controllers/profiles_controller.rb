@@ -5,12 +5,13 @@ class ProfilesController < ApplicationController
 
   def edit
     current_order.paied = true
-    @profile.user.orders << current_order
+    current_user.orders << current_order
   end
 
   def update
     if @profile.update(profile_params)
       flash[:notice] = "Thankyou for your order"
+      session[:order_id] = nil
       redirect_to thank_path
     else
       flash[:alert] = "Can not update your information"

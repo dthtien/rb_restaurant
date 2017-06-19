@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, only: :thank
-  before_action :paied?, only: :thank
   def index
     @food_items = FoodItem.order('food_items.impressions_count DESC').limit(5)
   end
