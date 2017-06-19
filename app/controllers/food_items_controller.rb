@@ -1,5 +1,5 @@
 class FoodItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
   before_action :set_food_item, only: [:show]
   before_action :log_impression, only: [:show]
 
